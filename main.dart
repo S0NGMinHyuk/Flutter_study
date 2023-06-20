@@ -27,6 +27,100 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.amber[700],
         centerTitle: true,  // 타이틀 중앙 배치
         elevation: 0.0,     // 앱 바 그림자 제거
+        
+        actions: <Widget> [ // 화면 오른쪽 쇼핑카트, 돋보기 위젯 추가
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {
+              print("Shopping cart button is clicked.");
+            },
+          ),
+
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              print("search button is clicked.");
+            },
+          )
+        ],
+      ),
+
+      drawer: Drawer(   // 화면 왼쪽 메뉴 위젯 생성
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget> [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(  // 왼쪽 메인 유저 프로필 사진
+                backgroundImage: AssetImage("assets/송민혁님(운전,민증).jpg"),
+                backgroundColor: Colors.white,
+              ),
+
+              otherAccountsPictures: <Widget> [   // 오른쪽 다른 유저 프로필 사진
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  backgroundImage: AssetImage("assets/송민혁님(운전,민증).jpg"),
+                )
+              ],
+
+              accountName: Text("Song"),
+              accountEmail: Text("poiuy010724@naver.com"),
+              onDetailsPressed: () {  // 오른쪽 화살표 생성
+                print("arrow is clicked");  
+              },
+              decoration: BoxDecoration(
+                color: Colors.red[200],
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(25.0),
+                  bottomRight: Radius.circular(25.0)
+                  ),
+              ),
+            ),
+
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.black,
+              ),
+              title: Text("Home"),
+              onTap: () {
+                print("Home is clicked");
+              },
+              trailing: Icon(Icons.add),
+            ),
+
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.black,
+              ),
+              title: Text("Setting"),
+              onTap: () {
+                print("Setting is clicked");
+              },
+              trailing: Icon(Icons.add),
+            ),
+
+            ListTile(
+              leading: Icon(
+                Icons.question_answer,
+                color: Colors.black,
+              ),
+              title: Text("Q&A"),
+              onTap: () {
+                print("Q&A is clicked");
+              },
+              trailing: Icon(Icons.add),
+            ),
+
+            Divider(
+              height: 60.0,
+              thickness: 0.5,
+              color: Colors.grey,
+              indent: 20.0,
+              endIndent: 20.0,
+            )
+          ],
+        ),
       ),
 
       body: const Padding(
