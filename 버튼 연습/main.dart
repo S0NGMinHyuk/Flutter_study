@@ -1,3 +1,5 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -56,28 +58,12 @@ class MyHomePage extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey,
                     ),
-                    onPressed: () {},
-                    child: const Text("Short"),
-                  ),
-                ),
-                SizedBox(
-                  width: 200,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey,
-                    ),
-                    onPressed: () {},
-                    child: const Text("A bit longer"),
-                  ),
-                ),
-                SizedBox(
-                  width: 200,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey,
-                    ),
-                    onPressed: () {},
-                    child: const Text("The longest text button"),
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder:(context) => const SecondPage(),
+                      ));
+                    },
+                    child: const Text("Go to second page"),
                   ),
                 ),
               ]
@@ -85,6 +71,34 @@ class MyHomePage extends StatelessWidget {
           )
         ],
       )
+    );
+  }
+}
+
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Second Page"),
+        backgroundColor: Colors.green,
+      ),
+
+      body: Center(
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.grey,
+          ),
+          child: const Text("Go back to first page",
+          style: TextStyle(
+            color: Colors.black,
+          ),),
+          onPressed: () {Navigator.pop(context);},
+          )
+        ),
     );
   }
 }
